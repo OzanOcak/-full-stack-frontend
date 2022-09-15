@@ -52,3 +52,35 @@ in App.js,we will place another layout that we created which is _DashLayout_, so
 if we browse http://localhost:3000/dash, we will see links which will be private later.
 
 ---
+
+## redux
+
+```console
+yarn add @reduxjs/toolkit react-redux
+```
+
+We need crete apiSlice.js file app/api directories to fetch the Note and User models
+we will use createApi and fetchBaseQuery redux hooks
+
+```javascript
+export const apiSlice = createApi({
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000' }),
+    tagTypes: ['Note', 'User'],
+    endpoints: builder => ({})
+}
+```
+
+then in app directory, we will use configureStore hook and call apiSlice as a reducer
+
+```javascript
+export const store = configureStore({
+  reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiSlice.middleware),
+  devTools: true,
+});
+```
+
+Then wrap BrowserRouter with Provider and inject the store so state managment will be accessible in whole app
