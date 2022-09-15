@@ -27,3 +27,28 @@ Layout component comes with react-router-dom which will recieve children and sho
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
 ```
+
+---
+
+```console
+yarn add @fortawesome/fontawesome-svg-core  @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+```
+
+in App.js,we will place another layout that we created which is _DashLayout_, so it can has children elements. we will turn DashLayout into protectec route late.
+
+```javascript
+<Route path="dash" element={<DashLayout />}>
+          <Route index element={<Welcome />} />
+          <Route path="notes">
+            <Route index element={<NotesList />} />
+          </Route>
+          <Route path="users">
+            <Route index element={<UsersList />} />
+          </Route>
+        </Route>
+        ...
+```
+
+if we browse http://localhost:3000/dash, we will see links which will be private later.
+
+---
