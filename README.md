@@ -87,7 +87,21 @@ Then wrap BrowserRouter with Provider and inject the store so state managment wi
 
 ---
 
-after completing usersSpiSlice.js, User.js, UserList.js
+after completing usersApiSlice.js, User.js, UserList.js
 
 if we run backend server, users will be fetch within the url;
 http://localhost:3000/dash/users
+
+---
+
+just like usersApiSlice, we need create notesApiSlice to inject endpoint to query notes from db, and Note.js and NotesList.js to route
+
+when we get http://localhost:4000/users in insomnia, we will see all the users with \_id, however we transform them id to able query them with transformResponse method of apiSlice.injectEndPoint. And id is ref in the Note model so we need to post
+http://localhost:4000/notes
+-d {
+"user":"632322100ce3a551b5b973dc",
+"title":"what's up!",
+"text":"lol!!!"
+}
+Now we can access and fetch the data in the browser with url of
+http://localhost:3000/dash/notes

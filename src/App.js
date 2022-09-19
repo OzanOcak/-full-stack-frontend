@@ -3,8 +3,8 @@ import Layout from "./components/Layout";
 import Login from "./features/auth/Login";
 import Public from "./components/Public";
 import Welcome from "./features/auth/Welcome";
-import NotesList from "./features/notes/NoteList";
-import UsersList from "./features/users/UserList";
+import NotesList from "./features/notes/NotesList";
+import UsersList from "./features/users/UsersList";
 import DashLayout from "./components/DashLayout";
 
 function App() {
