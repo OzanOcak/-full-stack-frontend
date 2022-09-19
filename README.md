@@ -84,3 +84,10 @@ export const store = configureStore({
 ```
 
 Then wrap BrowserRouter with Provider and inject the store so state managment will be accessible in whole app
+
+---
+
+after completing usersSpiSlice.js, User.js, UserList.js
+
+if we run backend server, users will be fetch within the url;
+http://localhost:3000/dash/users
