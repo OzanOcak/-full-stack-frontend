@@ -111,3 +111,7 @@ http://localhost:3000/dash/notes
 ## Auth Reducer
 
 create authSlice under feature/auth/ directory and add it to store.js. this reducer will keep the token, once we route to /auth url.
+
+## auth api slice
+
+now we need a api slice to inject end point is routed to auth/login, outh/logout and auth/refresh
