@@ -107,3 +107,7 @@ Now we can access and fetch the data in the browser with url of
 http://localhost:3000/dash/notes
 
 ---
+
+## Auth Reducer
+
+create authSlice under feature/auth/ directory and add it to store.js. this reducer will keep the token, once we route to /auth url.
