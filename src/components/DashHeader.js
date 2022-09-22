@@ -7,7 +7,7 @@ import {
   faUserPlus,
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import useAuth from "../hooks/useHooks";
+import useAuth from "../hooks/useAuth";
 import { useSendLogoutMutation } from "../features/auth/authApiSlice";
 import { useEffect } from "react";
 

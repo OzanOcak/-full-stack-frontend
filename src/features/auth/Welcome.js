@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useAuth from "../../hooks/useHooks";
+import useAuth from "../../hooks/useAuth";
 
 const Welcome = () => {
   const date = new Date();
