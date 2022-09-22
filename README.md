@@ -115,3 +115,41 @@ create authSlice under feature/auth/ directory and add it to store.js. this redu
 ## auth api slice
 
 now we need a api slice to inject end point is routed to auth/login, outh/logout and auth/refresh
+
+So far we set up most of the app and we use json web token middleware (verifyJWT.js) in the backend, in noteRoutes.js and userRoutes.js. Although we know create jwt , we dont pass it to backend in the request thus we get unauthorized respond, everytime we try to send req to backend. Note that we still can access new user page since no backend request involved in it.
+
+---
+
+we need to access refreh route for JWT query so we need to update apiSlice with credentials and authorization Bearer token
+
+```javascript
+const baseQuery = fetchBaseQuery({
+  baseUrl: "http://localhost:3500",
+  credentials: "include",
+  prepareHeaders: (headers, { getState }) => {
+    const token = getState().auth.token;
+
+    if (token) {
+      headers.set("authorization", `Bearer ${token}`);
+    }
+    return headers;
+  },
+});
+```
+
+since we alerady fetch url, we need to assign const baseQuery to base Query to createApi
+
+```javascript
+export const apiSlice = createApi({
+  baseQuery,
+  tagTypes: ["Note", "User"],
+  endpoints: (builder) => ({}),
+});
+```
+
+If we change aess token expires in 10s and refresh token 20s, when we sign in we will able to fetch notes but when access token expires it will give 403 forbidden error from jwt verification.
+
+we need create _baseQueryWithReauth_ function whict take _fetchBaseQuery_ as an args and route to **/auth/refresh** to refrech access token and finally we should assign baseQueryWithReauth to baseQuery in createApi.
+
+- if we login and access /dash/notes ,access token will expires within 10s and the page will not be fetched (403) but the server will be directed to /auth/refresh and will get one more access token which will expires within 10 sec. This time it will not get refresh token because it also expires in 20s.
+  Note that server update every 15s
