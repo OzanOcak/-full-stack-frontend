@@ -51,7 +51,7 @@ const Login = () => {
 
   const handleUserInput = (e) => setUsername(e.target.value);
   const handlePwdInput = (e) => setPassword(e.target.value);
-  const handleToggle = () => setPersist((prev) => !prev);
+  //const handleToggle = () => setPersist((prev) => !prev);
 
   const errClass = errMsg ? "errmsg" : "offscreen";
 
@@ -91,7 +91,7 @@ const Login = () => {
           />
           <button className="form__submit-button">Sign In</button>
 
-          <label htmlFor="persist" className="form__persist">
+          {/*<label htmlFor="persist" className="form__persist">
             <input
               type="checkbox"
               className="form__checkbox"
@@ -100,7 +100,7 @@ const Login = () => {
               checked={persist}
             />
             Trust This Device
-          </label>
+          </label>*/}
         </form>
       </main>
       <footer>
